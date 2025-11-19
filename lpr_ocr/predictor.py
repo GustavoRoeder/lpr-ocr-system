@@ -11,7 +11,11 @@ import cv2
 import sys
 from pathlib import Path
 
-MODEL_PATH = Path("/home/testelpr/lpr_models/best_model.pth")
+# Caminho do modelo (relativo ou absoluto)
+if Path("/home/testelpr/lpr_models/best_model.pth").exists():
+    MODEL_PATH = Path("/home/testelpr/lpr_models/best_model.pth")
+else:
+    MODEL_PATH = Path(__file__).parent / "models" / "best_model.pth"
 IMG_HEIGHT = 32
 IMG_WIDTH = 128
 HIDDEN_SIZE = 256
