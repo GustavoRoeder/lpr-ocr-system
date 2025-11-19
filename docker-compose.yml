@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  lpr-ocr:
+    build: .
+    image: lpr-ocr:latest
+    container_name: lpr-ocr
+    volumes:
+      - ./data:/data
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: ["--help"]
