@@ -1,11 +1,15 @@
 version: '3.8'
+
 services:
-  lpr-ocr:
+  lpr-complete:
     build: .
-    image: lpr-ocr:latest
-    container_name: lpr-ocr
+    image: lpr-complete:latest
+    container_name: lpr-complete
     volumes:
       - ./data:/data
+      - /home/testelpr/yolo_training/plate_detector4/weights/best.pt:/app/models/yolo_best.pt:ro
+      - /home/testelpr/lpr_models/best_model.pth:/app/lpr_ocr/models/best_model.pth:ro
     environment:
+      - CONFIDENCE=0.5
       - PYTHONUNBUFFERED=1
     command: ["--help"]
